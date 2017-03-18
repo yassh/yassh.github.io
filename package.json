@@ -1,0 +1,32 @@
+{
+  "name": "yassh.github.io",
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/yassh/yassh.github.io/issues"
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "fixpack": "^2.3.1",
+    "glob": "^7.1.1",
+    "html-validator": "^2.2.0",
+    "npm-run-all": "^4.0.2"
+  },
+  "homepage": "https://github.com/yassh/yassh.github.io#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yassh/yassh.github.io.git"
+  },
+  "scripts": {
+    "fix": "npm-run-all fix:*",
+    "fix:js": "eslint ./*.js --fix",
+    "fix:pack": "fixpack",
+    "test": "npm run validate",
+    "validate": "npm-run-all validate:*",
+    "validate:html": "node ./html-validator.js",
+    "validate:js": "eslint ./*.js"
+  }
+}
