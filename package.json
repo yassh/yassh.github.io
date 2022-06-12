@@ -11,9 +11,9 @@
   "scripts": {
     "build": "npm run clean && parcel build 'src/**/*.html'",
     "clean": "rimraf ./dist",
+    "dev": "npm run clean && parcel 'src/**/*.html'",
     "fix": "run-p fix:*",
     "fix:html": "prettier 'src/**/*.html' --write",
-    "fix:js": "prettier 'src/**/*.{js,ts}' --write",
-    "start": "npm run clean && parcel 'src/**/*.html'"
+    "fix:js": "prettier 'src/**/*.{js,ts}' --write"
   }
 }
