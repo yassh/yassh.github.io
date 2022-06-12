@@ -12,6 +12,7 @@
   "private": true,
   "scripts": {
     "build": "npm run clean && parcel build 'src/**/*.html'",
+    "checkall": "run-p lint test",
     "clean": "rimraf ./dist",
     "dev": "npm run clean && parcel 'src/**/*.html'",
     "fix": "run-p fix:*",
@@ -21,6 +22,7 @@
     "lint:html": "prettier 'src/**/*.html' --check",
     "lint:js": "run-p lint:js:*",
     "lint:js:prettier": "prettier 'src/**/*.{js,ts}' --check",
-    "lint:js:tsc": "tsc --noEmit"
+    "lint:js:tsc": "tsc --noEmit",
+    "test": "echo 'no test'"
   }
 }
