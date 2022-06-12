@@ -1,0 +1,1 @@
+{"mappings":"AAEAA,QAAQC,IAFgB","sources":["src/hello/index.ts"],"sourcesContent":["const message: string = \"Hello!\"\n\nconsole.log(message)\n\nexport {} // tscにmoduleとして処理してもらうため\n"],"names":["console","log"],"version":3,"file":"index.5bb4a7fc.js.map"}
