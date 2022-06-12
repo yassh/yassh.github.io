@@ -2,7 +2,13 @@
   "name": "yassh.github.io",
   "version": "0.0.0",
   "devDependencies": {
-    "parcel": "^2.6.0"
+    "parcel": "^2.6.0",
+    "rimraf": "^3.0.2"
   },
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "npm run clean && parcel build 'src/**/*.html'",
+    "clean": "rimraf ./dist",
+    "start": "npm run clean && parcel 'src/**/*.html'"
+  }
 }
