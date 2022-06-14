@@ -1,4 +1,4 @@
-// https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm
+// ☞ https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm
 
 const table = [
   {
