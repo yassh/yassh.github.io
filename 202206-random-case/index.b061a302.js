@@ -1,0 +1,2 @@
+const e=document.getElementById("input"),t=document.getElementById("output"),n=document.getElementById("convert"),d=document.getElementById("copy"),o=()=>{const n=[...e.value].map((e=>(e=>Math.random()<.5?e.toLowerCase():e.toUpperCase())(e))).join("");t.value=n};e.addEventListener("input",(()=>{o()})),n.addEventListener("click",(()=>{o()})),d.addEventListener("click",(()=>{t.select(),document.execCommand("copy")}));
+//# sourceMappingURL=index.b061a302.js.map

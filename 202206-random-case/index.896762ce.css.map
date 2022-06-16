@@ -1,0 +1,1 @@
+{"mappings":"ACAA,0BAKA","sources":["202206-random-case/index.896762ce.css","src/202206-random-case/index.css"],"sourcesContent":["input, button {\n  font: inherit;\n}\n\ninput {\n  width: 24em;\n}\n\n/*# sourceMappingURL=index.896762ce.css.map */\n","input,\nbutton {\n  font: inherit;\n}\n\ninput {\n  width: 24em;\n}\n"],"names":[],"version":3,"file":"index.896762ce.css.map"}
