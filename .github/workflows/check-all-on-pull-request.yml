@@ -10,22 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Read .node-version
-        id: node_version
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./.node-version
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.node_version.outputs.content }}"
+          node-version-file: ./.node-version
 
       - name: Check Node.js version
         run: node --version
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run checkall
         run: yarn checkall
