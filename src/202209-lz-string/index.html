@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>URL-safe string compression</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>URL-safe string compression</h1>
+
+    <h2>Compress</h2>
+    <div class="layout">
+      <div>
+        <textarea id="compress-input"></textarea>
+      </div>
+      <div style="text-align: center">
+        <div>⇢</div>
+        <div style="writing-mode: vertical-rl">Compress</div>
+      </div>
+      <div>
+        <textarea id="compress-output" readonly></textarea>
+      </div>
+    </div>
+
+    <h2>Decompress</h2>
+    <div class="layout">
+      <div>
+        <textarea id="decompress-input"></textarea>
+      </div>
+      <div style="text-align: center">
+        <div>⇢</div>
+        <div style="writing-mode: vertical-rl">Decompress</div>
+      </div>
+      <div>
+        <textarea id="decompress-output" readonly></textarea>
+      </div>
+    </div>
+
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>
