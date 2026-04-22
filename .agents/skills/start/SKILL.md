@@ -81,8 +81,6 @@ git switch -c feature/{YYYYMM}-{slug}
 **`index.css`**: 空ファイル
 **`index.js`**: 空ファイル
 
-外部ライブラリを使いたいときは npm install ではなく、`import` で CDN URL（`https://esm.sh/パッケージ名@バージョン`）を直接指定する。`package.json` の `dependencies` は使わない方針。
-
 ### 5. `src/index.html` の一覧に追加
 
 `</ul>` の直前に、末尾追加で:
