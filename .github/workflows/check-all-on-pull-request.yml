@@ -8,18 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: ./.node-version
+          cache: 'npm'
 
       - name: Check Node.js version
         run: node --version
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm ci
 
       - name: Run checkall
-        run: yarn checkall
+        run: npm run checkall
