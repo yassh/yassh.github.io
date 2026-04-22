@@ -1,8 +1,11 @@
 {
   "name": "yassh.github.io",
   "version": "0.0.0",
-  "engines": {
-    "node": ">=24.15.0 <25"
+  "dependencies": {
+    "lz-string": "^1.4.4",
+    "marked": "^4.0.18",
+    "three": "^0.150.1",
+    "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
@@ -19,6 +22,9 @@
     "typescript": "^4.7.3",
     "vite": "^8.0.9"
   },
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -33,11 +39,5 @@
     "lint:js:prettier": "prettier 'src/**/*.{js,ts}' --check",
     "lint:js:tsc": "tsc --noEmit",
     "test": "jest"
-  },
-  "dependencies": {
-    "lz-string": "^1.4.4",
-    "marked": "^4.0.18",
-    "three": "^0.150.1",
-    "throttle-debounce": "^5.0.0"
   }
 }
