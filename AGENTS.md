@@ -1,5 +1,9 @@
 # yassh.github.io
 
+## 言語
+
+**JavaScript のみ**。TypeScript は使わない。
+
 ## 外部ライブラリ
 
 `package.json` の `dependencies` は使わない方針。外部ライブラリは `import` で CDN URL を直接指定する:
