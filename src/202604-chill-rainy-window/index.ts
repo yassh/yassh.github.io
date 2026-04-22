@@ -11,7 +11,7 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
 })
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.outputEncoding = THREE.sRGBEncoding
+renderer.outputColorSpace = THREE.SRGBColorSpace
 renderer.toneMapping = THREE.ACESFilmicToneMapping
 renderer.toneMappingExposure = 1.05
 
@@ -301,7 +301,7 @@ scene.add(outside)
   }
   // 星は昼間なし
   const tex = new THREE.CanvasTexture(canvas)
-  tex.encoding = THREE.sRGBEncoding
+  tex.colorSpace = THREE.SRGBColorSpace
   const m = new THREE.Mesh(
     new THREE.PlaneGeometry(220, 110),
     new THREE.MeshBasicMaterial({
@@ -372,7 +372,7 @@ const makeBuildingTexture = (
     }
   }
   const tex = new THREE.CanvasTexture(canvas)
-  tex.encoding = THREE.sRGBEncoding
+  tex.colorSpace = THREE.SRGBColorSpace
   return tex
 }
 
@@ -478,10 +478,10 @@ outside.add(cityGroup)
         ? "tiered"
         : "spire"
       : roll < 0.25
-      ? "tiered"
-      : roll < 0.35
-      ? "spire"
-      : "basic"
+        ? "tiered"
+        : roll < 0.35
+          ? "spire"
+          : "basic"
     makeBuilding({ x, z, w, d, h, style, av: h > 11 && brng() < 0.7 })
   }
   // さらに遠景（さらに広く）
@@ -495,8 +495,8 @@ outside.add(cityGroup)
     const style: "basic" | "tiered" | "spire" = isSkyscraper
       ? "tiered"
       : brng() < 0.15
-      ? "tiered"
-      : "basic"
+        ? "tiered"
+        : "basic"
     makeBuilding({ x, z, w, d, h, style, av: h > 9 && brng() < 0.45 })
   }
   // 最遠景（輪郭だけ霞む）
@@ -1166,7 +1166,7 @@ const makeLargeArt = () => {
   }
   cctx.globalAlpha = 1
   const tex = new THREE.CanvasTexture(canvas)
-  tex.encoding = THREE.sRGBEncoding
+  tex.colorSpace = THREE.SRGBColorSpace
   const inner = new THREE.Mesh(
     new THREE.PlaneGeometry(w - 0.05, h - 0.05),
     new THREE.MeshStandardMaterial({ map: tex, roughness: 0.8 }),

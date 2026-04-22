@@ -5,17 +5,13 @@ const $input = document.getElementById("input") as HTMLTextAreaElement
 const $output = document.getElementById("output") as HTMLTextAreaElement
 const $copy = document.getElementById("copy") as HTMLButtonElement
 
-const markedOptions = {
-  breaks: true,
-  headerIds: false,
-  xhtml: true,
-}
+marked.use({ breaks: true })
 
 $input.addEventListener(
   "input",
   debounce(500, () => {
     const input = $input.value
-    const output = marked.parse(input, markedOptions)
+    const output = marked.parse(input) as string
 
     $output.value = output
   }),
