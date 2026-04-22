@@ -478,10 +478,10 @@ outside.add(cityGroup)
         ? "tiered"
         : "spire"
       : roll < 0.25
-      ? "tiered"
-      : roll < 0.35
-      ? "spire"
-      : "basic"
+        ? "tiered"
+        : roll < 0.35
+          ? "spire"
+          : "basic"
     makeBuilding({ x, z, w, d, h, style, av: h > 11 && brng() < 0.7 })
   }
   // さらに遠景（さらに広く）
@@ -495,8 +495,8 @@ outside.add(cityGroup)
     const style: "basic" | "tiered" | "spire" = isSkyscraper
       ? "tiered"
       : brng() < 0.15
-      ? "tiered"
-      : "basic"
+        ? "tiered"
+        : "basic"
     makeBuilding({ x, z, w, d, h, style, av: h > 9 && brng() < 0.45 })
   }
   // 最遠景（輪郭だけ霞む）
