@@ -11,7 +11,7 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
 })
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.outputColorSpace = THREE.SRGBColorSpace
+renderer.outputEncoding = THREE.sRGBEncoding
 renderer.toneMapping = THREE.ACESFilmicToneMapping
 renderer.toneMappingExposure = 1.05
 
@@ -301,7 +301,7 @@ scene.add(outside)
   }
   // 星は昼間なし
   const tex = new THREE.CanvasTexture(canvas)
-  tex.colorSpace = THREE.SRGBColorSpace
+  tex.encoding = THREE.sRGBEncoding
   const m = new THREE.Mesh(
     new THREE.PlaneGeometry(220, 110),
     new THREE.MeshBasicMaterial({
@@ -372,7 +372,7 @@ const makeBuildingTexture = (
     }
   }
   const tex = new THREE.CanvasTexture(canvas)
-  tex.colorSpace = THREE.SRGBColorSpace
+  tex.encoding = THREE.sRGBEncoding
   return tex
 }
 
@@ -1166,7 +1166,7 @@ const makeLargeArt = () => {
   }
   cctx.globalAlpha = 1
   const tex = new THREE.CanvasTexture(canvas)
-  tex.colorSpace = THREE.SRGBColorSpace
+  tex.encoding = THREE.sRGBEncoding
   const inner = new THREE.Mesh(
     new THREE.PlaneGeometry(w - 0.05, h - 0.05),
     new THREE.MeshStandardMaterial({ map: tex, roughness: 0.8 }),
