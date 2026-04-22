@@ -48,7 +48,7 @@ const table = [
 /**
  * 所得税の計算をする関数
  */
-export const calcIncomeTax = (income: number): number => {
+export const calcIncomeTax = (income) => {
   const roundedIncome = Math.floor(income / 1000) * 1000
 
   for (const row of table) {

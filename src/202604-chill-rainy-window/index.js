@@ -1,10 +1,10 @@
-import * as THREE from "three"
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js"
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js"
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js"
+import * as THREE from "https://esm.sh/three@0.150.1"
+import { EffectComposer } from "https://esm.sh/three@0.150.1/examples/jsm/postprocessing/EffectComposer.js"
+import { RenderPass } from "https://esm.sh/three@0.150.1/examples/jsm/postprocessing/RenderPass.js"
+import { UnrealBloomPass } from "https://esm.sh/three@0.150.1/examples/jsm/postprocessing/UnrealBloomPass.js"
 
-const $canvas = document.getElementById("scene") as HTMLCanvasElement
-const $start = document.getElementById("start") as HTMLButtonElement
+const $canvas = document.getElementById("scene")
+const $start = document.getElementById("start")
 
 const renderer = new THREE.WebGLRenderer({
   canvas: $canvas,
@@ -106,7 +106,7 @@ window.addEventListener("resize", resize)
 const ROOM = { w: 14, h: 8.0, d: 12 }
 const WIN = { w: 13.4, h: 7.5, cy: 3.85, z: 6 }
 
-const mulberry32 = (seed: number) => {
+const mulberry32 = (seed) => {
   let a = seed
   return () => {
     a |= 0
@@ -266,7 +266,7 @@ scene.add(outside)
   const canvas = document.createElement("canvas")
   canvas.width = 2048
   canvas.height = 1024
-  const cctx = canvas.getContext("2d")!
+  const cctx = canvas.getContext("2d")
   // 午後5時・夕方の兆し。上は青灰、ホライゾン手前に淡い暖色
   const grad = cctx.createLinearGradient(0, 0, 0, 1024)
   grad.addColorStop(0, "#3a424e")
@@ -318,18 +318,14 @@ scene.add(outside)
 // 月は雨雲に隠れているので出さない
 
 // ビル生成（canvas-textureで窓グリッド）
-const aviationLights: THREE.Mesh[] = []
-const buildingWindows: THREE.Mesh[] = []
+const aviationLights = []
+const buildingWindows = []
 
-const makeBuildingTexture = (
-  texW: number,
-  texH: number,
-  brng: () => number,
-) => {
+const makeBuildingTexture = (texW, texH, brng) => {
   const canvas = document.createElement("canvas")
   canvas.width = texW
   canvas.height = texH
-  const cctx = canvas.getContext("2d")!
+  const cctx = canvas.getContext("2d")
   const bodyGrad = cctx.createLinearGradient(0, 0, 0, texH)
   // 夕陽を受ける側の色味（ウォーム寄り）
   const r1 = 50 + Math.floor(brng() * 40)
@@ -385,14 +381,7 @@ outside.add(cityGroup)
   const brng = mulberry32(7777)
   const darkMat = new THREE.MeshBasicMaterial({ color: 0x06041a })
 
-  const addBox = (
-    x: number,
-    y: number,
-    z: number,
-    w: number,
-    h: number,
-    d: number,
-  ) => {
+  const addBox = (x, y, z, w, h, d) => {
     const tex = makeBuildingTexture(
       192,
       Math.max(192, Math.floor(h * 24)),
@@ -405,7 +394,7 @@ outside.add(cityGroup)
     cityGroup.add(box)
   }
 
-  const addAviation = (x: number, z: number, top: number) => {
+  const addAviation = (x, z, top) => {
     const av = new THREE.Mesh(
       new THREE.SphereGeometry(0.11, 8, 8),
       new THREE.MeshBasicMaterial({ color: 0xff3020 }),
@@ -415,7 +404,7 @@ outside.add(cityGroup)
     aviationLights.push(av)
   }
 
-  const addSpire = (x: number, z: number, top: number) => {
+  const addSpire = (x, z, top) => {
     const spire = new THREE.Mesh(
       new THREE.ConeGeometry(0.18, 1.6 + brng() * 1.4, 6),
       darkMat,
@@ -426,15 +415,7 @@ outside.add(cityGroup)
     return top + spH
   }
 
-  const makeBuilding = (params: {
-    x: number
-    z: number
-    w: number
-    d: number
-    h: number
-    style: "basic" | "tiered" | "spire"
-    av: boolean
-  }) => {
+  const makeBuilding = (params) => {
     const { x, z, w, d, h, style } = params
     if (style === "basic") {
       addBox(x, 0, z, w, h, d)
@@ -473,7 +454,7 @@ outside.add(cityGroup)
     const isSkyscraper = brng() < 0.18
     const h = isSkyscraper ? 22 + brng() * 16 : 6 + brng() * 12
     const roll = brng()
-    const style: "basic" | "tiered" | "spire" = isSkyscraper
+    const style = isSkyscraper
       ? roll < 0.5
         ? "tiered"
         : "spire"
@@ -492,11 +473,7 @@ outside.add(cityGroup)
     const d = 3 + brng() * 3
     const isSkyscraper = brng() < 0.12
     const h = isSkyscraper ? 18 + brng() * 14 : 4 + brng() * 9
-    const style: "basic" | "tiered" | "spire" = isSkyscraper
-      ? "tiered"
-      : brng() < 0.15
-        ? "tiered"
-        : "basic"
+    const style = isSkyscraper ? "tiered" : brng() < 0.15 ? "tiered" : "basic"
     makeBuilding({ x, z, w, d, h, style, av: h > 9 && brng() < 0.45 })
   }
   // 最遠景（輪郭だけ霞む）
@@ -730,7 +707,7 @@ const makeGlassTable = () => {
     [0, -topD / 2 + 0.01, "x"],
     [topW / 2 - 0.01, 0, "z"],
     [-topW / 2 + 0.01, 0, "z"],
-  ] as const) {
+  ]) {
     const len = axis === "x" ? topW : topD
     const geo =
       axis === "x"
@@ -854,7 +831,7 @@ const makeCandle = () => {
 }
 
 // ハードカバーの本（テーブルの上）
-const makeHardcover = (color: number) => {
+const makeHardcover = (color) => {
   const g = new THREE.Group()
   const cover = new THREE.Mesh(
     new THREE.BoxGeometry(0.35, 0.04, 0.24),
@@ -1009,7 +986,7 @@ const makeArcLamp = () => {
 }
 
 // ペンダントライト（コーヒーテーブルの上）
-const makePendant = (hangLen: number) => {
+const makePendant = (hangLen) => {
   const g = new THREE.Group()
   // ロッド（高天井に合わせて長め）
   const rod = new THREE.Mesh(
@@ -1139,7 +1116,7 @@ const makeLargeArt = () => {
   const canvas = document.createElement("canvas")
   canvas.width = 256
   canvas.height = 340
-  const cctx = canvas.getContext("2d")!
+  const cctx = canvas.getContext("2d")
   const grad = cctx.createLinearGradient(0, 0, 0, 340)
   grad.addColorStop(0, "#1a1232")
   grad.addColorStop(0.55, "#6a3d5a")
@@ -1451,8 +1428,8 @@ const animate = () => {
   last = now
 
   // 雨
-  const posAttr = rainGeo.attributes.position as THREE.BufferAttribute
-  const pos = posAttr.array as Float32Array
+  const posAttr = rainGeo.attributes.position
+  const pos = posAttr.array
   const wind = 0.018
   for (let i = 0; i < RAIN_COUNT; i++) {
     const speed = rainSpeeds[i]
@@ -1497,7 +1474,7 @@ const animate = () => {
     const av = aviationLights[i]
     const phase = now * 0.002 + i * 0.65
     const on = Math.sin(phase) > 0.2
-    const mat = av.material as THREE.MeshBasicMaterial
+    const mat = av.material
     mat.transparent = true
     mat.opacity = on ? 1 : 0.1
   }
@@ -1508,7 +1485,7 @@ const animate = () => {
 requestAnimationFrame(animate)
 
 // --- 音楽 ---
-const midiToHz = (midi: number) => 440 * Math.pow(2, (midi - 69) / 12)
+const midiToHz = (midi) => 440 * Math.pow(2, (midi - 69) / 12)
 
 const progression = [
   [50, 53, 57, 60],
@@ -1519,10 +1496,10 @@ const progression = [
 
 const pentatonic = [60, 62, 64, 67, 69, 72, 74, 76]
 
-let audioCtx: AudioContext | null = null
+let audioCtx = null
 let started = false
 
-const makeNoiseBuffer = (ac: AudioContext, seconds: number) => {
+const makeNoiseBuffer = (ac, seconds) => {
   const buf = ac.createBuffer(2, ac.sampleRate * seconds, ac.sampleRate)
   for (let ch = 0; ch < 2; ch++) {
     const data = buf.getChannelData(ch)
@@ -1533,14 +1510,7 @@ const makeNoiseBuffer = (ac: AudioContext, seconds: number) => {
   return buf
 }
 
-const playPiano = (
-  ac: AudioContext,
-  dest: AudioNode,
-  midi: number,
-  startTime: number,
-  holdSec: number,
-  velocity: number,
-) => {
+const playPiano = (ac, dest, midi, startTime, holdSec, velocity) => {
   const freq = midiToHz(midi)
   const out = ac.createGain()
   out.connect(dest)
@@ -1569,7 +1539,7 @@ const playPiano = (
   }
 }
 
-const playKick = (ac: AudioContext, dest: AudioNode, start: number) => {
+const playKick = (ac, dest, start) => {
   const osc = ac.createOscillator()
   osc.type = "sine"
   osc.frequency.setValueAtTime(110, start)
@@ -1583,13 +1553,7 @@ const playKick = (ac: AudioContext, dest: AudioNode, start: number) => {
   osc.stop(start + 0.28)
 }
 
-const playHat = (
-  ac: AudioContext,
-  dest: AudioNode,
-  noiseBuf: AudioBuffer,
-  start: number,
-  velocity = 0.08,
-) => {
+const playHat = (ac, dest, noiseBuf, start, velocity = 0.08) => {
   const src = ac.createBufferSource()
   src.buffer = noiseBuf
   const hp = ac.createBiquadFilter()
@@ -1606,12 +1570,7 @@ const playHat = (
   src.stop(start + 0.08)
 }
 
-const playSnap = (
-  ac: AudioContext,
-  dest: AudioNode,
-  noiseBuf: AudioBuffer,
-  start: number,
-) => {
+const playSnap = (ac, dest, noiseBuf, start) => {
   const src = ac.createBufferSource()
   src.buffer = noiseBuf
   const bp = ac.createBiquadFilter()
@@ -1714,7 +1673,7 @@ const startAudio = () => {
   let nextTime = ac.currentTime + 0.3
   let index = 0
 
-  const scheduleBar = (chord: number[], startBar: number) => {
+  const scheduleBar = (chord, startBar) => {
     playPiano(ac, pianoLP, chord[0] - 12, startBar, barDur * 1.1, 0.32)
 
     const pattern = [0, 2, 1, 3, 2]

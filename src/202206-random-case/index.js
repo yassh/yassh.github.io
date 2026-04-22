@@ -1,9 +1,9 @@
-const $input = document.getElementById("input") as HTMLInputElement
-const $output = document.getElementById("output") as HTMLInputElement
-const $convert = document.getElementById("convert") as HTMLButtonElement
-const $copy = document.getElementById("copy") as HTMLButtonElement
+const $input = document.getElementById("input")
+const $output = document.getElementById("output")
+const $convert = document.getElementById("convert")
+const $copy = document.getElementById("copy")
 
-const changeCaseRandomly = (char: string) =>
+const changeCaseRandomly = (char) =>
   Math.random() < 0.5 ? char.toLowerCase() : char.toUpperCase()
 
 const convert = () => {
@@ -25,5 +25,3 @@ $copy.addEventListener("click", () => {
   $output.select()
   document.execCommand("copy")
 })
-
-export {} // tscにmoduleとして処理してもらうため
