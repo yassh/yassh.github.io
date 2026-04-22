@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest"
-import { calcIncomeTax } from "."
+import { calcIncomeTax } from "./index.js"
 
 describe("calcIncomeTax", () => {
   test.each([
