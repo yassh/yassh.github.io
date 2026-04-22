@@ -4,6 +4,7 @@
   "engines": {
     "node": ">=24.15.0 <25"
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^28.1.1",
