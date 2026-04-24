@@ -1,2 +1,0 @@
-import"./modulepreload-polyfill-CXK8biUa.js";import{debounce as e}from"https://esm.sh/throttle-debounce@5.0.2";import{marked as t}from"https://esm.sh/marked@18.0.2";var n=document.getElementById(`input`),r=document.getElementById(`output`),i=document.getElementById(`copy`);t.use({breaks:!0}),n.addEventListener(`input`,e(500,()=>{let e=n.value;r.value=t.parse(e)})),i.addEventListener(`click`,()=>{r.select(),document.execCommand(`copy`)});
-//# sourceMappingURL=202208-md2html-dz-WnTqV.js.map

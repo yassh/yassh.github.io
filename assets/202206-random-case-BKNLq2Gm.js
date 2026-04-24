@@ -1,2 +1,0 @@
-import"./modulepreload-polyfill-CXK8biUa.js";var e=document.getElementById(`input`),t=document.getElementById(`output`),n=document.getElementById(`convert`),r=document.getElementById(`copy`),i=e=>Math.random()<.5?e.toLowerCase():e.toUpperCase(),a=()=>{t.value=[...e.value].map(e=>i(e)).join(``)};e.addEventListener(`input`,()=>{a()}),n.addEventListener(`click`,()=>{a()}),r.addEventListener(`click`,()=>{t.select(),document.execCommand(`copy`)});
-//# sourceMappingURL=202206-random-case-BKNLq2Gm.js.map
